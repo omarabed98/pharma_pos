@@ -1,9 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/cache/local_storage_service.dart';
+import '../../../core/domain/models/user_model.dart';
+import '../../../core/domain/routing/app_routes.dart';
 import '../../../core/domain/utils/alerts.dart';
 import '../../../core/presentation/localization/localization_keys.dart';
 import '../../../core/services/session_manager_service.dart';
 import '../../../core/services/token_manager_service.dart';
+import '../../../core/utils/device_info_utils.dart';
 import '../data/repository/auth_repo.dart';
 import '../domain/models/auth_credentials.dart';
 import 'login/login_screen.dart';
@@ -25,18 +30,42 @@ class AuthController extends GetxController with Alerts {
 
   AuthState authState = AuthState.initial;
 
-  Future<void> emailLogin({
+  Future<void> manualLogin({
     required String email,
     required String password,
   }) async {
+    // Check if baseUrl is set
+    final baseUrl = LocalStorageService().baseUrl;
+    if (baseUrl == null || baseUrl.isEmpty) {
+      showFailSnackbar(
+        text: LocalizationKeys.baseUrlRequired.tr,
+        iconData: Icons.settings,
+      );
+      return;
+    }
+
+    // Get or fetch IMEI
+    String imei = LocalStorageService().deviceImei ?? '';
+    if (imei.isEmpty) {
+      // If IMEI is not stored, fetch it and save it
+      imei = await DeviceInfoUtils().getIMEI();
+      if (imei.isNotEmpty && imei != 'unknown_device') {
+        LocalStorageService().deviceImei = imei;
+      }
+    }
+
     authState = AuthState.loading;
     update([LoginScreen]);
 
-    final response = await _repository.manualLogin(email, password);
+    final response = await _repository.manualLogin(email, password, imei);
     response.fold(
       (failure) {
         authState = AuthState.failure;
-        showFailSnackbar(text: failure.message);
+        // Show specific error message for login failures
+        showFailSnackbar(
+          text: LocalizationKeys.loginError.tr,
+          iconData: Icons.error,
+        );
         update([LoginScreen]);
       },
       (credentials) {
@@ -51,58 +80,34 @@ class AuthController extends GetxController with Alerts {
   /// And logging in as guest won't count for setting first login.
   Future<void> continueToApp({AuthCredentials? credentials}) async {
     if (credentials != null) {
+      // Save tokens to secure storage (with expiration)
       await _repository.setAccessToken(
         accessToken: credentials.access,
         refreshToken: credentials.refresh,
       );
+
+      // Save user information to local storage
+      final nameParts = credentials.name.split(' ');
+      final userModel = UserModel(
+        id: credentials.id.toString(),
+        username: credentials.username,
+        email: credentials.email,
+        firstName: nameParts.isNotEmpty ? nameParts.first : null,
+        lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : null,
+      );
+      LocalStorageService().user = userModel;
 
       // Reset refresh attempts counter after successful login
       _tokenManager.resetRefreshAttempts();
     }
 
     authState = AuthState.success;
-    // if (credentials != null) {
-    //   await Get.find<ProfileController>().fetchUser();
-    // }
     update([LoginScreen]);
-    // FirebaseAnalytics.instance.setUserId(
-    //   id: '${credentials?.user.userId ?? 'guest'}',
-    // );
+
     if (credentials != null) {
-      // ArabGTAnalyticsService.logEvent(
-      //   name: 'login',
-      //   parameters: {
-      //     'method': credentials.loginMethod.name,
-      //     'name': credentials.user.username,
-      //     'email': credentials.user.email,
-      //     'device_type': Platform.operatingSystem,
-      //     'device_version': Platform.operatingSystemVersion,
-      //   },
-      // );
-
-      // Get.offNamed(
-      //   AppRoutes.questionnaire,
-      //   arguments: UserProfile.empty().copyWith(
-      //     firstName: credentials.user.firstName,
-      //     lastName: credentials.user.lastName,
-      //     email: credentials.user.email,
-      //     nickname: credentials.user.username,
-      //   ),
-      // );
-      return;
+      // Navigate to dashboard after successful login
+      Get.offNamed(AppRoutes.dashboard);
     }
-
-    // ArabGTAnalyticsService.logEvent(
-    //   name: 'login',
-    //   parameters: {
-    //     'method': 'guest',
-    //     'name': credentials?.user.username ?? 'guest',
-    //     'email': credentials?.user.email ?? 'guest',
-    //     'device_type': Platform.operatingSystem,
-    //     'device_version': Platform.operatingSystemVersion,
-    //   },
-    // );
-    // Get.offNamed(ArabgtRoutes.dashboard);
   }
 
   /// Handles user logout using the session manager

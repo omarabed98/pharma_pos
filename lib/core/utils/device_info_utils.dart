@@ -60,4 +60,28 @@ class DeviceInfoUtils {
       return 'Unknown Device';
     }
   }
+
+  /// Get device IMEI (or unique device identifier)
+  /// On Android, this returns androidId
+  /// On iOS, this returns identifierForVendor
+  /// Note: For actual IMEI on Android, you need special permissions
+  Future<String> getIMEI() async {
+    try {
+      if (Platform.isAndroid) {
+        final androidInfo = await _deviceInfo.androidInfo;
+        // Use androidId as IMEI alternative (actual IMEI requires special permissions)
+        return androidInfo.id;
+      } else if (Platform.isIOS) {
+        final iosInfo = await _deviceInfo.iosInfo;
+        // Use identifierForVendor as unique device identifier
+        return iosInfo.identifierForVendor ?? 'unknown_ios_device';
+      }
+      return 'unknown_device';
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting IMEI: $e');
+      }
+      return 'unknown_device';
+    }
+  }
 }

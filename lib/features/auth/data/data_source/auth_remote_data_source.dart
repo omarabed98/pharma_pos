@@ -9,8 +9,9 @@ import '../../domain/models/auth_credentials.dart';
 
 abstract class AuthRemoteDataSourceAbstraction {
   Future<Either<Failure, AuthCredentials>> manualLogin(
-    String email,
+    String username,
     String password,
+    String imei,
   );
 }
 
@@ -21,13 +22,14 @@ class AuthRemoteDataSource implements AuthRemoteDataSourceAbstraction {
 
   @override
   Future<Either<Failure, AuthCredentials>> manualLogin(
-    String email,
+    String username,
     String password,
+    String imei,
   ) async {
     final request = NetworkRequest(
       route: NetworkRouter.login,
       requestType: RequestType.post,
-      data: {'email': email, 'password': password},
+      data: {'username': username, 'password': password, 'imei': imei},
     );
     final response = await _networkAdapter.request(request);
     if (response.status == NetworkResponseStatus.success) {

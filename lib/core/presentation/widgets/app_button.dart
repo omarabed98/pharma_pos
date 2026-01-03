@@ -77,7 +77,7 @@ class AppButton extends StatelessWidget {
         this.backgroundColor ??
         (isPrimary ? theme.colorScheme.primary : Colors.transparent);
     return SizedBox(
-      height: height ?? 50,
+      height: height ?? 53,
       width: width,
       child: FilledButton(
         onPressed: isLoading || !enabled || isProcessing ? null : onPressed,

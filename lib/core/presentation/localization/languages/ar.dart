@@ -301,5 +301,40 @@ class Ar {
     LocalizationKeys.getStartedDescription:
         'ابدأ في إدارة صيدليتك بكفاءة مع نظام نقاط البيع المتكامل. سجل حسابك الآن واستمتع بجميع الميزات.',
     LocalizationKeys.loginToExistingAccount: 'تسجيل الدخول إلى حساب موجود',
+    LocalizationKeys.welcomeToPharmaApp: 'مرحباً بك في تطبيق الصيدلية',
+    LocalizationKeys.orSetupWith: 'أو إعداد باستخدام',
+    LocalizationKeys.dontHaveAccountYet: 'ليس لديك حساب بعد؟',
+    LocalizationKeys.registerHere: 'سجل هنا',
+    LocalizationKeys.google: 'جوجل',
+    LocalizationKeys.setupServer: 'إعداد الخادم',
+    LocalizationKeys.setupServerDescription:
+        'أدخل عنوان URL الأساسي للخادم الخاص بك للاتصال بالـ API',
+    LocalizationKeys.enterBaseUrl: 'أدخل عنوان URL الأساسي',
+    LocalizationKeys.baseUrl: 'عنوان URL الأساسي',
+    LocalizationKeys.baseUrlHint: 'مثال: https://api.example.com',
+    LocalizationKeys.saveConfiguration: 'حفظ الإعدادات',
+    LocalizationKeys.configurationSavedSuccessfully: 'تم حفظ الإعدادات بنجاح',
+    LocalizationKeys.invalidUrl: 'عنوان URL غير صحيح',
+    LocalizationKeys.baseUrlRequired:
+        'يجب إدخال عنوان URL الأساسي من خلال إعداد الخادم',
+    LocalizationKeys.loginError:
+        'اسم المستخدم أو كلمة المرور أو عنوان URL الأساسي غير صحيح',
+    LocalizationKeys.supportTitle: 'مركز الدعم الفني',
+    LocalizationKeys.supportDescription:
+        'إذا واجهت أي مشكلة في تسجيل الدخول أو تحتاج إلى مساعدة، يرجى التواصل معنا',
+    LocalizationKeys.contactSupport: 'تواصل مع الدعم الفني',
+    LocalizationKeys.supportPhoneNumber: '0777777777',
+    LocalizationKeys.callSupport: 'اتصل بالدعم',
+    LocalizationKeys.ifYouFaceAnyProblem:
+        'إذا واجهت أي مشكلة، يرجى التواصل مع مركز الدعم الفني',
+    LocalizationKeys.baseUrlInstructions: 'تعليمات إعداد Base URL',
+    LocalizationKeys.baseUrlInstructionsDescription:
+        'Base URL هو عنوان الخادم الذي يتصل به التطبيق. يجب أن يكون بصيغة URL صحيحة مثل:',
+    LocalizationKeys.howToSetupBaseUrl: 'كيفية إعداد Base URL:',
+    LocalizationKeys.baseUrlExample: 'مثال: https://api.example.com',
+    LocalizationKeys.step1SetupBaseUrl:
+        'اذهب إلى صفحة إعداد الخادم من خلال زر "إعداد الخادم" في صفحة تسجيل الدخول',
+    LocalizationKeys.step2SetupBaseUrl: 'أدخل عنوان URL الأساسي للخادم الخاص بك',
+    LocalizationKeys.step3SetupBaseUrl: 'اضغط على "حفظ الإعدادات"',
   };
 }

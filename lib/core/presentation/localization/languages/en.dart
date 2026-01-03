@@ -304,5 +304,40 @@ class En {
     LocalizationKeys.getStartedDescription:
         'Start managing your pharmacy efficiently with our integrated POS system. Create your account now and enjoy all the features.',
     LocalizationKeys.loginToExistingAccount: 'Login to existing account',
+    LocalizationKeys.welcomeToPharmaApp: 'Welcome to Pharma App',
+    LocalizationKeys.orSetupWith: 'Or setup with',
+    LocalizationKeys.dontHaveAccountYet: 'Don\'t have an account yet?',
+    LocalizationKeys.registerHere: 'Register here',
+    LocalizationKeys.google: 'Google',
+    LocalizationKeys.setupServer: 'Setup Server',
+    LocalizationKeys.setupServerDescription:
+        'Enter your server base URL to connect to the API',
+    LocalizationKeys.enterBaseUrl: 'Enter Base URL',
+    LocalizationKeys.baseUrl: 'Base URL',
+    LocalizationKeys.baseUrlHint: 'Example: https://api.example.com',
+    LocalizationKeys.saveConfiguration: 'Save Configuration',
+    LocalizationKeys.configurationSavedSuccessfully:
+        'Configuration saved successfully',
+    LocalizationKeys.invalidUrl: 'Invalid URL',
+    LocalizationKeys.baseUrlRequired:
+        'You must enter the base URL through the setup server',
+    LocalizationKeys.loginError: 'Username, password, or base URL is incorrect',
+    LocalizationKeys.supportTitle: 'Support Center',
+    LocalizationKeys.supportDescription:
+        'If you face any login issues or need assistance, please contact us',
+    LocalizationKeys.contactSupport: 'Contact Support',
+    LocalizationKeys.supportPhoneNumber: '0777777777',
+    LocalizationKeys.callSupport: 'Call Support',
+    LocalizationKeys.ifYouFaceAnyProblem:
+        'If you face any problem, please contact the support center',
+    LocalizationKeys.baseUrlInstructions: 'Base URL Setup Instructions',
+    LocalizationKeys.baseUrlInstructionsDescription:
+        'Base URL is the server address that the app connects to. It should be in a valid URL format like:',
+    LocalizationKeys.howToSetupBaseUrl: 'How to setup Base URL:',
+    LocalizationKeys.baseUrlExample: 'Example: https://api.example.com',
+    LocalizationKeys.step1SetupBaseUrl:
+        'Go to the server setup page through the "Setup Server" button on the login page',
+    LocalizationKeys.step2SetupBaseUrl: 'Enter your server base URL',
+    LocalizationKeys.step3SetupBaseUrl: 'Press "Save Configuration"',
   };
 }

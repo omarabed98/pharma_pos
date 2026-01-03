@@ -8,6 +8,7 @@ import 'package:get/get.dart' hide FormData, Response;
 import 'package:pos_pharma_app/environments/app_environments.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../cache/local_storage_service.dart';
 import '../../cache/secure_storage_service.dart';
 import '../../domain/errors/failure.dart';
 import '../../presentation/localization/localization_keys.dart';
@@ -171,7 +172,12 @@ class NetworkAdapter implements NetworkAdapterAbstraction {
   }
 
   String _urlBuilder(NetworkRouter route, [String? urlIdentifier]) {
-    return '${AppEnvironmentHelper().getEnvironmentVariable('BASE_URL')}${route.path}${urlIdentifier ?? ''}';
+    // Get base URL from LocalStorage if available, otherwise use environment variable
+    final savedBaseUrl = LocalStorageService().baseUrl;
+    final baseUrl =
+        savedBaseUrl ??
+        AppEnvironmentHelper().getEnvironmentVariable('BASE_URL');
+    return '$baseUrl${route.path}${urlIdentifier ?? ''}';
   }
 
   void _onSendProgress(

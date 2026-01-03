@@ -2,6 +2,9 @@ import 'package:get/get.dart';
 
 import '../../../features/auth/binding/auth_binding.dart';
 import '../../../features/auth/presentation/login/login_screen.dart';
+import '../../../features/auth/presentation/login/setup_auth_screen.dart';
+import '../../../features/auth/presentation/support/support_screen.dart';
+import '../../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../../features/onboarding/binding/onboarding_binding.dart';
 import '../../../features/onboarding/presentation/get_started_screen.dart';
 import '../../../features/onboarding/presentation/onboarding_screen.dart';
@@ -37,6 +40,22 @@ class AppNavigator {
       GetPage(
         name: AppRoutes.login,
         page: () => LoginScreen(),
+        bindings: [AuthBinding()],
+      ),
+      GetPage(
+        name: AppRoutes.setupAuth,
+        page: () => const SetupAuthScreen(),
+        bindings: [AuthBinding()],
+      ),
+      GetPage(
+        name: AppRoutes.support,
+        page: () => const SupportScreen(),
+      ),
+
+      // Dashboard
+      GetPage(
+        name: AppRoutes.dashboard,
+        page: () => const DashboardScreen(),
         bindings: [AuthBinding()],
       ),
     ];

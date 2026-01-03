@@ -122,11 +122,33 @@ class LocalStorageService extends BaseStorage {
   }
 
   bool get isDarkMode => themeMode == ThemeMode.dark;
-  
+
   bool get hasSeenOnboarding =>
       sharedPreferences?.getBool(LocalStorageKeys.hasSeenOnboarding.key) ??
       false;
 
   set hasSeenOnboarding(bool value) =>
       sharedPreferences?.setBool(LocalStorageKeys.hasSeenOnboarding.key, value);
+
+  String? get baseUrl =>
+      sharedPreferences?.getString(LocalStorageKeys.baseUrl.key);
+
+  set baseUrl(String? value) {
+    if (value == null) {
+      sharedPreferences?.remove(LocalStorageKeys.baseUrl.key);
+    } else {
+      sharedPreferences?.setString(LocalStorageKeys.baseUrl.key, value);
+    }
+  }
+
+  String? get deviceImei =>
+      sharedPreferences?.getString(LocalStorageKeys.deviceImei.key);
+
+  set deviceImei(String? value) {
+    if (value == null) {
+      sharedPreferences?.remove(LocalStorageKeys.deviceImei.key);
+    } else {
+      sharedPreferences?.setString(LocalStorageKeys.deviceImei.key, value);
+    }
+  }
 }

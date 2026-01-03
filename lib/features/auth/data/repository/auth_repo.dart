@@ -7,8 +7,9 @@ import '../data_source/auth_remote_data_source.dart';
 
 abstract class AuthRepositoryAbstraction {
   Future<Either<Failure, AuthCredentials>> manualLogin(
-    String email,
+    String username,
     String password,
+    String imei,
   );
 
   /// Removed access token from cache if its null, and saves if non null
@@ -23,9 +24,10 @@ class AuthRepository implements AuthRepositoryAbstraction {
 
   @override
   Future<Either<Failure, AuthCredentials>> manualLogin(
-    String email,
+    String username,
     String password,
-  ) => _remoteDataSource.manualLogin(email, password);
+    String imei,
+  ) => _remoteDataSource.manualLogin(username, password, imei);
 
   @override
   Future<void> setAccessToken({

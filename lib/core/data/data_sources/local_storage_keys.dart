@@ -9,7 +9,9 @@ enum LocalStorageKeys {
   versionNumber('APP_VERSION_NUMBER'),
   deviceTimezone('DEVICE_TIMEZONE'),
   user('USER_DATA'),
-  hasSeenOnboarding('HAS_SEEN_ONBOARDING');
+  hasSeenOnboarding('HAS_SEEN_ONBOARDING'),
+  baseUrl('BASE_URL'),
+  deviceImei('DEVICE_IMEI');
 
   final String key;
 

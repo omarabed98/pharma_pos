@@ -4,6 +4,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pos_pharma_app/core/cache/local_storage_service.dart';
 import 'package:pos_pharma_app/core/domain/routing/app_routes.dart';
 import 'package:pos_pharma_app/core/presentation/widgets/app_dialog.dart';
+import 'package:pos_pharma_app/core/utils/device_info_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/domain/utils/alerts.dart';
@@ -20,13 +21,23 @@ class SplashController extends GetxController with Alerts {
   @override
   void onInit() {
     super.onInit();
-    // FirebaseAnalytics.instance.logAppOpen(
-    //   parameters: {
-    //     'device_type': Platform.operatingSystem,
-    //     'device_version': Platform.operatingSystemVersion,
-    //   },
-    // );
+    _initializeIMEI();
     checkConnectivity();
+  }
+
+  /// Initialize and store IMEI if not already stored
+  Future<void> _initializeIMEI() async {
+    try {
+      final storedImei = LocalStorageService().deviceImei;
+      if (storedImei == null || storedImei.isEmpty) {
+        final imei = await DeviceInfoUtils().getIMEI();
+        if (imei.isNotEmpty && imei != 'unknown_device') {
+          LocalStorageService().deviceImei = imei;
+        }
+      }
+    } catch (e) {
+      // Silently handle IMEI initialization errors
+    }
   }
 
   void checkConnectivity() async {
@@ -140,16 +151,17 @@ class SplashController extends GetxController with Alerts {
       Get.offNamed(AppRoutes.login);
       return;
     }
+    Get.offNamed(AppRoutes.dashboard);
 
-    final response = await _repository.verifyToken(accessToken);
-    response.fold(
-      (failure) {
-        Get.offNamed(AppRoutes.login);
-        showFailSnackbar(text: failure.message);
-      },
-      (_) {
-        // Get.offNamed(AppRoutes.dashboard);
-      },
-    );
+    // final response = await _repository.verifyToken(accessToken);
+    // response.fold(
+    //   (failure) {
+    //     Get.offNamed(AppRoutes.login);
+    //     showFailSnackbar(text: failure.message);
+    //   },
+    //   (_) {
+    //     // Get.offNamed(AppRoutes.dashboard);
+    //   },
+    // );
   }
 }

@@ -1,6 +1,6 @@
 enum NetworkRouter {
   // Authentication
-  login(path: '/api/auth/login/'),
+  login(path: '/api/Auth/login'),
   checkUpdate(path: '/api/shared/app/version/check/'),
 
   // Dashboard

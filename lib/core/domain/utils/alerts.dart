@@ -20,7 +20,6 @@ mixin Alerts {
     Color iconColor = ColorManager().primary;
     Color textColor = ColorManager().textDark;
     final svgIcon = iconPath != null ? true : false;
-    final theme = Theme.of(Get.context!);
 
     Get.showSnackbar(
       GetSnackBar(
@@ -74,8 +73,8 @@ mixin Alerts {
             ? Icon(iconData, color: iconColor)
             : null,
         shouldIconPulse: false,
-        backgroundColor: theme.colorScheme.surfaceContainer,
-        borderRadius: 6,
+        backgroundColor: const Color(0xffff4fffe),
+        borderRadius: 10,
         snackStyle: SnackStyle.FLOATING,
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         padding: const EdgeInsets.all(12),

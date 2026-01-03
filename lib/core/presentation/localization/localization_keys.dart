@@ -280,4 +280,39 @@ class LocalizationKeys {
   static const getStartedText = 'getStartedText';
   static const getStartedDescription = 'getStartedDescription';
   static const loginToExistingAccount = 'loginToExistingAccount';
-  }
+
+  // Login
+  static const welcomeToPharmaApp = 'welcomeToPharmaApp';
+  static const orSetupWith = 'orSetupWith';
+  static const dontHaveAccountYet = 'dontHaveAccountYet';
+  static const registerHere = 'registerHere';
+  static const google = 'google';
+
+  // Setup Auth
+  static const setupServer = 'setupServer';
+  static const setupServerDescription = 'setupServerDescription';
+  static const enterBaseUrl = 'enterBaseUrl';
+  static const baseUrl = 'baseUrl';
+  static const baseUrlHint = 'baseUrlHint';
+  static const saveConfiguration = 'saveConfiguration';
+  static const configurationSavedSuccessfully =
+      'configurationSavedSuccessfully';
+  static const invalidUrl = 'invalidUrl';
+  static const baseUrlRequired = 'baseUrlRequired';
+  static const loginError = 'loginError';
+
+  // Support / Forgot Password
+  static const supportTitle = 'supportTitle';
+  static const supportDescription = 'supportDescription';
+  static const contactSupport = 'contactSupport';
+  static const supportPhoneNumber = 'supportPhoneNumber';
+  static const callSupport = 'callSupport';
+  static const ifYouFaceAnyProblem = 'ifYouFaceAnyProblem';
+  static const baseUrlInstructions = 'baseUrlInstructions';
+  static const baseUrlInstructionsDescription = 'baseUrlInstructionsDescription';
+  static const howToSetupBaseUrl = 'howToSetupBaseUrl';
+  static const baseUrlExample = 'baseUrlExample';
+  static const step1SetupBaseUrl = 'step1SetupBaseUrl';
+  static const step2SetupBaseUrl = 'step2SetupBaseUrl';
+  static const step3SetupBaseUrl = 'step3SetupBaseUrl';
+}
