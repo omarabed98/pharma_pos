@@ -1,0 +1,18 @@
+import 'package:get/get.dart';
+
+import '../../../core/cache/secure_storage_service.dart';
+import '../data/data_source/auth_remote_data_source.dart';
+import '../data/repository/auth_repo.dart';
+
+class AuthBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<AuthRemoteDataSourceAbstraction>(
+      () => AuthRemoteDataSource(Get.find()),
+    );
+
+    Get.lazyPut<AuthRepositoryAbstraction>(
+      () => AuthRepository(Get.find(), SecureStorageService()),
+    );
+  }
+}
