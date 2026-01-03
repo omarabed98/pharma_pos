@@ -10,7 +10,7 @@ class ColorManager {
 
   // ========== Brand Colors ==========
   // Primary - Used for primary actions (CTA), main buttons, and critical highlights
-  final Color primary = const Color(0xff188a80);
+  final Color primary = const Color(0xff19998e);
 
   // Accent - Used for highlights, icons, badges, achievements, and gradients
   final Color accent = const Color(0xFFDFA853);

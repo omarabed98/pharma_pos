@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pos_pharma_app/core/domain/constants/image_manager.dart';
+import 'package:pos_pharma_app/core/presentation/localization/localization_keys.dart';
 import 'package:pos_pharma_app/core/presentation/theme/color_manager.dart';
 import 'package:pos_pharma_app/core/presentation/theme/text_manager.dart';
 import 'package:pos_pharma_app/core/presentation/widgets/app_button.dart';
@@ -22,17 +23,21 @@ class OnboardingScreen extends StatelessWidget {
               children: [
                 // Progress indicators
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.25,
+                    vertical: 16,
+                  ),
                   child: Row(
                     children: List.generate(3, (index) {
                       return Expanded(
+                        flex: index == controller.currentPage ? 2 : 1,
                         child: Container(
                           height: 4,
                           margin: EdgeInsets.only(right: index < 2 ? 8 : 0),
                           decoration: BoxDecoration(
-                            color: controller.currentPage >= index
+                            color: controller.currentPage == index
                                 ? ColorManager().primary
-                                : ColorManager().primary.withOpacity(0.2),
+                                : ColorManager().primary.withValues(alpha: 0.3),
                             borderRadius: BorderRadius.circular(2),
                           ),
                         ),
@@ -48,30 +53,28 @@ class OnboardingScreen extends StatelessWidget {
                     children: [
                       _OnboardingPage(
                         image: ImageManager().onboarding1,
-                        title: 'Find Medicines',
-                        description:
-                            'Easily find your prescribed medicines from a variety of registered pharmacies, no matter where you are.',
+                        title: LocalizationKeys.onboarding1Title.tr,
+                        description: LocalizationKeys.onboarding1Description.tr,
                       ),
                       _OnboardingPage(
                         image: ImageManager().onboarding2,
-                        title: 'Select Pharmacy',
-                        description:
-                            'Pick the pharmacy that suits you best. We\'ve got trusted options and reliable options in our network.',
+                        title: LocalizationKeys.onboarding2Title.tr,
+                        description: LocalizationKeys.onboarding2Description.tr,
                       ),
                       _OnboardingPage(
                         image: ImageManager().onboarding3,
-                        title: 'Pharmacy Management',
-                        description:
-                            'Easily manage orders and maintain an organized, top-notch service for customers. Update drug details manually or through file uploads for an up-to-date catalog.',
+                        title: LocalizationKeys.onboarding3Title.tr,
+                        description: LocalizationKeys.onboarding3Description.tr,
                       ),
                     ],
                   ),
                 ),
                 // Continue button
                 Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: EdgeInsets.all(24.0),
                   child: AppButton.primary(
-                    text: 'Continue',
+                    height: 55,
+                    text: LocalizationKeys.continueText.tr,
                     onPressed: controller.nextPage,
                   ),
                 ),
@@ -108,6 +111,8 @@ class _OnboardingPage extends StatelessWidget {
             title,
             style: AppTypography.headingM.copyWith(
               color: ColorManager().lightOnSurface,
+              fontFamily: AppFonts.inter,
+              fontSize: 30,
             ),
             textAlign: TextAlign.center,
           ),
@@ -116,7 +121,8 @@ class _OnboardingPage extends StatelessWidget {
           Text(
             description,
             style: AppTypography.bodyM.copyWith(
-              color: ColorManager().lightOnSurface.withOpacity(0.7),
+              fontFamily: AppFonts.cairoSlant,
+              color: ColorManager().lightOnSurface.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -132,4 +138,3 @@ class _OnboardingPage extends StatelessWidget {
     );
   }
 }
-

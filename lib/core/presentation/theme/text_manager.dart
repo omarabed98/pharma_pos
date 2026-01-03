@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 abstract class AppFonts {
   static const String cairo = 'Cairo';
   static const String inter = 'Inter';
+  static const String cairoSlant = 'CairoSlant';
 }
 
 // ══════════════════════════════════════════════════════════════════════════════

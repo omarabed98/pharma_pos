@@ -288,5 +288,21 @@ class En {
     LocalizationKeys.failedToChangeLanguage: 'Failed to change language',
     LocalizationKeys.logoutSuccessfully: 'Logout successfully',
     LocalizationKeys.logoutFailed: 'Logout failed',
+
+    // Onboarding
+    LocalizationKeys.onboarding1Title: 'Pharmacy POS System',
+    LocalizationKeys.onboarding1Description:
+        'A comprehensive system to manage your pharmacy sales with ease and efficiency. Record sales, manage inventory, and provide excellent service to your customers.',
+    LocalizationKeys.onboarding2Title: 'Inventory & Sales Management',
+    LocalizationKeys.onboarding2Description:
+        'Easily monitor your medicine and medical product inventory. Record instant sales, track products, and get detailed reports on your pharmacy\'s performance.',
+    LocalizationKeys.onboarding3Title: 'Enhanced Customer Service',
+    LocalizationKeys.onboarding3Description:
+        'Provide a seamless shopping experience for your customers. Quickly generate invoices, manage customer accounts, and get comprehensive sales reports to make better decisions.',
+    LocalizationKeys.continueText: 'Continue',
+    LocalizationKeys.getStartedText: 'Get Started',
+    LocalizationKeys.getStartedDescription:
+        'Start managing your pharmacy efficiently with our integrated POS system. Create your account now and enjoy all the features.',
+    LocalizationKeys.loginToExistingAccount: 'Login to existing account',
   };
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pos_pharma_app/core/domain/constants/image_manager.dart';
+import 'package:pos_pharma_app/core/presentation/localization/localization_keys.dart';
 import 'package:pos_pharma_app/core/presentation/theme/color_manager.dart';
 import 'package:pos_pharma_app/core/presentation/theme/text_manager.dart';
 import 'package:pos_pharma_app/core/presentation/widgets/app_button.dart';
@@ -25,18 +26,23 @@ class GetStartedScreen extends StatelessWidget {
                   const SizedBox(height: kToolbarHeight),
                   // Title
                   Text(
-                    'Get Started',
+                    LocalizationKeys.getStartedText.tr,
                     style: AppTypography.headingM.copyWith(
                       color: ColorManager().lightOnSurface,
+                      fontFamily: AppFonts.inter,
+                      fontSize: 34,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
                   // Description
                   Text(
-                    'Join Pharma today and enjoy convenient access to pharmacies across different locations. Start now!',
+                    LocalizationKeys.getStartedDescription.tr,
                     style: AppTypography.bodyM.copyWith(
-                      color: ColorManager().lightOnSurface.withOpacity(0.7),
+                      color: ColorManager().lightOnSurface.withValues(
+                        alpha: 0.7,
+                      ),
+                      fontFamily: AppFonts.cairoSlant,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -53,8 +59,9 @@ class GetStartedScreen extends StatelessWidget {
                   const SizedBox(height: 48),
                   // Login button
                   AppButton.primary(
-                    text: 'Login to existing account',
+                    text: LocalizationKeys.loginToExistingAccount.tr,
                     onPressed: controller.goToLogin,
+                    height: 55,
                   ),
                   const SizedBox(height: 16),
                 ],
@@ -66,4 +73,3 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 }
-

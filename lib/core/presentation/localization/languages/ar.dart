@@ -285,5 +285,21 @@ class Ar {
     LocalizationKeys.failedToChangeLanguage: 'فشل تغيير اللغة',
     LocalizationKeys.logoutSuccessfully: 'تم تسجيل الخروج بنجاح',
     LocalizationKeys.logoutFailed: 'فشل تسجيل الخروج',
+
+    // Onboarding
+    LocalizationKeys.onboarding1Title: 'نظام نقاط البيع للصيدليات',
+    LocalizationKeys.onboarding1Description:
+        'نظام متكامل لإدارة مبيعات الصيدلية بسهولة وكفاءة. سجل المبيعات، أدر المخزون، وقدم خدمة ممتازة لعملائك.',
+    LocalizationKeys.onboarding2Title: 'إدارة المخزون والمبيعات',
+    LocalizationKeys.onboarding2Description:
+        'راقب مخزون الأدوية والمنتجات الطبية بسهولة. سجل المبيعات الفورية، تتبع المنتجات، واحصل على تقارير مفصلة عن أداء صيدليتك.',
+    LocalizationKeys.onboarding3Title: 'خدمة عملاء محسّنة',
+    LocalizationKeys.onboarding3Description:
+        'قدم تجربة شراء سلسة لعملائك. سجل الفواتير بسرعة، أدر حسابات العملاء، واحصل على تقارير مبيعات شاملة لاتخاذ قرارات أفضل.',
+    LocalizationKeys.continueText: 'استمرار',
+    LocalizationKeys.getStartedText: 'ابدأ الآن',
+    LocalizationKeys.getStartedDescription:
+        'ابدأ في إدارة صيدليتك بكفاءة مع نظام نقاط البيع المتكامل. سجل حسابك الآن واستمتع بجميع الميزات.',
+    LocalizationKeys.loginToExistingAccount: 'تسجيل الدخول إلى حساب موجود',
   };
 }

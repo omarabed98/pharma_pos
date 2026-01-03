@@ -268,4 +268,16 @@ class LocalizationKeys {
   static const failedToChangeLanguage = 'failedToChangeLanguage';
   static const logoutSuccessfully = 'logoutSuccessfully';
   static const logoutFailed = 'logoutFailed';
-}
+
+  // Onboarding
+  static const onboarding1Title = 'onboarding1Title';
+  static const onboarding1Description = 'onboarding1Description';
+  static const onboarding2Title = 'onboarding2Title';
+  static const onboarding2Description = 'onboarding2Description';
+  static const onboarding3Title = 'onboarding3Title';
+  static const onboarding3Description = 'onboarding3Description';
+  static const continueText = 'continueText';
+  static const getStartedText = 'getStartedText';
+  static const getStartedDescription = 'getStartedDescription';
+  static const loginToExistingAccount = 'loginToExistingAccount';
+  }
